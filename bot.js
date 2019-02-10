@@ -503,7 +503,7 @@ client.on("message", message => {
 
 
 
-const fs = require("fs")
+
 let ar = JSON.parse(fs.readFileSync(`./AutoRole.json`, `utf8`))
 
 
