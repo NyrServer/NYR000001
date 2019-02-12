@@ -15,27 +15,45 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on("message", async message => {
+client.on('message', message => { //clear
+    if(!message.channel.guild) return;
+ if(message.content.startsWith(prefix + 'clear')) {
+ if(!message.channel.guild) return message.channel.send('**هذا الامر فقط للسيرفرات**').then(m => m.delete(5000));
+ if(!message.member.hasPermission('MANAGE_MESSAGE')) return      message.channel.send('**ليس لديك برمشن manage message`' );
+ let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
+ let request = `Requested By ${message.author.username}`;
+ message.channel.send(`**هل انت متأكد من حذف الشات؟**`).then(msg => {
+ msg.react('✅')
+ .then(() => msg.react('❌'))
+ .then(() =>msg.react('✅'))
 
-            var args = message.content.substring(prefix.length).split(" ");
-            if (message.content.startsWith(prefix + "clear")) {
- if (!args[1]) {
-                                let x5bz1 = new Discord.RichEmbed()
-                                .setDescription("!clear [الـرقـم]")
-                                .setColor("#0000FF")
-                                message.channel.sendEmbed(x5bz1);
-                            } else {
-                            let messagecount = parseInt(args[1]);
-                            message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
-                                                          message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
-                            message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
+ let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+ let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
 
-             
-                             let f = await message.channel.send(`\`\`\`lua\nعدد الـرسـال الـتـي تـم مـسـحـهـا : ${args[1]}\`\`\``);
-f = await f.delete(2000);
-                            }
-                          }
-});
+ let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
+ let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
+ reaction1.on("collect", r => {
+ message.channel.send(`سينحذف الشات ...`).then(m => m.delete(5000));
+ var msg;
+         msg = parseInt();
+
+       message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+       message.channel.sendMessage("", {embed: {
+         title: "`` تــــم حذف الشات ``",
+         color: 0x06DF00,
+         footer: {
+
+         }
+       }}).then(msg => {msg.delete(3000)});
+
+ })
+ reaction2.on("collect", r => {
+ message.channel.send(`**تم الغاء حذف الشات**`).then(m => m.delete(5000));
+ msg.delete();
+ })
+ })
+ }
+ });
 
 client.on('message',async message => {
   if(message.channel.type === 'dm') return;
