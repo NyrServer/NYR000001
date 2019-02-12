@@ -485,9 +485,6 @@ client.on('message', message => {
     }
 });
 
-client.on('guildMemberAdd', member=> {
-    member.addRole(member.guild.roles.find("name","Player"));
-    });
 
 client.on("message", message => {
 	var args = message.content.split(' ').slice(1); 
