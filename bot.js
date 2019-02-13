@@ -15,23 +15,7 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-	 const bannedwords = [
-		"كل زق",
-		"كسمك",
-		"كس امك",
-		"كل زق",
-		"زبي",
-		"بوت زق", 
-		"السبة"
 
-	  ];
-
-	client.on('message',  message => {
-	  if(bannedwords.some(word => message.content.includes(word))) {
-		message.delete()
-		message.reply(" احترم نفسك , يمنع الشتم في خادمنا او سوف تتعرض الي  ميوت ").then(msg => {msg.delete(5000)});;
-	  };
-	});
 
  const bannedwords = [
 		"#فكك",
