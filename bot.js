@@ -52,6 +52,34 @@ client.on('message', async message => {
   }
 });
 
+client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help") {
+
+
+ message.author.sendMessage(`
+ 
+
+ ╱╭╮╭╮╱╱╱╱╭╮╭━╮╱╱╱╱╱╱╭━━╮╱╱╱
+♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ 
+اوامر البوت
+❖اوامر عامه
+
+❖+invites لمعرفة كم دعوت شخص
+❖Soon
+
+❖اوامر الالعاب
+❖#فكك
+❖#اسرع
+❖#لغز
+
+`);
+
+message.channel.send('**تم الارسال في الخاص**');
+
+    }
+});
+
 client.on('message', ra3d => {
 
                         let args = ra3d.content.split(" ").slice(1).join(" ")
