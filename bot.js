@@ -17,27 +17,7 @@ client.on('ready', () => {
 
 
 
- const bannedwords = [
-		"#فكك",
-		"#اسرع",
-		"#لغز",
-		"#profile",
-		"+invites",
-		"nplay", 
-	        "gplay", 
-	        "bplay", 
-	        "rplay", 
-		"fiiiiidud"
-
-	  ];
-
-	client.on('message',  message => {
-	  if(bannedwords.some(word => message.content.includes(word))) {
-		message.delete()
-		message.reply(" هذا الشات غير مخصص للاوامر ").then(msg => {msg.delete(5000)});;
-	  };
-	});
-
+ 
 
 client.on('message', message => {
    if(message.content.startsWith(prefix + "invites")) {
