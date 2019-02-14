@@ -34,7 +34,7 @@ client.on('message', function(message) {
     invites[member.guild.id] = guildInvites;
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     const inviter = client.users.get(invite.inviter.id);
-    const logChannel = member.guild.channels.find(channel => channel.name === "invite-cheker");
+    const logChannel = member.guild.channels.find(channel => channel.name === "invite-checker");
     logChannel.send(`${member.user.tag} دخل باستخدام الانفايت ${invite.code} من قبل ${inviter.tag}. تم استخدام الانفايت ${invite.uses} مرة من حين انشائها.`);
   });
 });
