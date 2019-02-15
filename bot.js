@@ -15,6 +15,27 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+const bannedwords = [
+      "كسمك",
+      "زبي",
+      "قحبه",
+      "قحبة",
+      "خنيث",
+      "جرار", 
+      "زق", 
+      "خرا", 
+      "منيوك", 
+        "كلب"
+
+      ];
+
+    client.on('message',  message => {
+      if(bannedwords.some(word => message.content.includes(word))) {
+        message.delete()
+        message.reply("احترم نفسك !").then(msg => {msg.delete(5000)});;
+      };
+    });
+
 client.on('message', function(message) {
     if (message.content == "+clear") {
         if (message.member.hasPermission("MANAGE_MESSAGES")) {
