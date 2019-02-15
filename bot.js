@@ -176,38 +176,20 @@ client.on('message', async message => {
 });
 
 client.on('message', message => {
-    if (message.author.bot) return;
-     if (message.content === prefix + "help") {
-
-
- message.author.sendMessage(`
- 
-
- ╱╭╮╭╮╱╱╱╱╭╮╭━╮╱╱╱╱╱╱╭━━╮╱╱╱
-♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ ♕ 
-اوامر البوت
-
-╱╭╮╭╮╱╱╱╱╱***NYR***╱╱╱╱╭━━╮╱╱╱
-
-❖اوامر عامه
-
-❖+invites لمعرفة كم دعوت شخص
-❖Soon
-
-╱╭╮╭╮╱╱╱╱╭╮╭━╮╱╱╱╱╱╱╭━━╮╱╱╱
-
-❖اوامر الالعاب
-
-❖#فكك
-❖#اسرع
-❖#لغز
-
-╱╭╮╭╮╱╱╱╱╭╮╭━╮╱╱╱╱╱╱╭━━╮╱╱╱
-
-`);
-
-message.channel.send('**تم الارسال في الخاص**');
-
+     if (message.content === "+help") {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField('     ** ** ' ,' ** أوآمر عـاًمة ** ')   
+.addField('     **+invites** ' ,' **لروؤية كم دعوت شخص** ')
+.addField('     **+info**  ' ,' **مـعلومات عن الـسيرفر** ')
+.addField('     ** ** ' ,' ** ** ')
+.addField('     ** ** ' ,' ** أوآمر الإدآرة ** ')
+.addField('     **+ban ** ' ,' ** لـتبنيد عضو  ** ')
+.addField('     **+bc ** ' ,' ** للبرودكاست ** ')
+.addField('     **+clear** ' , '**لـ مسح الشات** ')
+.addField('     **+roles** ' , '**لـ اعطاء شخص رتبة** ')
+.setColor('RANDOM')
+  message.channel.sendEmbed(embed);
     }
 });
 
