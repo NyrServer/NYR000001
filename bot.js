@@ -15,6 +15,23 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+client.on('message', warn => {
+    const log = warn.guild.channels.find(c => c.name === 'staff-chat');
+    const all = warn.guild.channels.find(c => c.name === 'nyr');
+    const user = warn.mentions.members.first();
+    const reason = warn.content.split(' ').slice(2).join(' ');
+    if (warn.content === `${prefix}warn`) {
+      const embed = new Discord.RichEmbed()
+      .setAuthor(' NyR Warn ')
+      .setThumbnail(user.avatarURL)
+      .addField('User Warned', `${user}`)
+      .addField('Warned By', `<@${warn.author.id}>`)
+      .addField('Reason', `${reason}`);
+        log.send({ embed });
+        all.send({ embed });
+    }
+});
+
 client.on("guildMemberAdd", member => {
     member.createDM().then(function (channel) {
     return channel.send(`**  
