@@ -25,27 +25,7 @@ client.on("guildMemberAdd", member => {
   }).catch(console.error)
   });
 
-const bannedwords = [
-      "كسمك",
-      "زبي",
-      "قحبه",
-      "قحبة",
-      "خنيث",
-      "كس",
-      "جرار", 
-      "زق", 
-      "خرا", 
-      "منيوك", 
-        "كلب"
 
-      ];
-
-    client.on('message',  message => {
-      if(bannedwords.some(word => message.content.includes(word))) {
-        message.delete()
-        message.reply("احترم نفسك !").then(msg => {msg.delete(5000)});;
-      };
-    });
 
 client.on('message', function(message) {
     if (message.content == "+clear") {
