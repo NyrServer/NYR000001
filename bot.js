@@ -15,7 +15,7 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('message', warn => {
+  client.on('message', warn => {
     const log = warn.guild.channels.find(c => c.name === 'staff-chat');
     const all = warn.guild.channels.find(c => c.name === 'nyr');
     const user = warn.mentions.members.first();
@@ -23,7 +23,7 @@ client.on('message', warn => {
     if (warn.content === `${prefix}warn`) {
       const embed = new Discord.RichEmbed()
       .setAuthor(' NyR Warn ')
-      .setThumbnail(user.avatarURL)
+      .setThumbnail(message.author.avatarURL)
       .addField('User Warned', `${user}`)
       .addField('Warned By', `<@${warn.author.id}>`)
       .addField('Reason', `${reason}`);
