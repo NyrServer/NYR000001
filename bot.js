@@ -23,7 +23,6 @@ client.on('ready', () => {
     if (warn.content === `${prefix}warn`) {
       const embed = new Discord.RichEmbed()
       .setAuthor(' NyR Warn ')
-      .setThumbnail(message.author.avatarURL)
       .addField('User Warned', `${user}`)
       .addField('Warned By', `<@${warn.author.id}>`)
       .addField('Reason', `${reason}`);
