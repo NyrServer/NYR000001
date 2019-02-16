@@ -15,6 +15,23 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+client.on("guildMemberAdd", member => {
+    member.createDM().then(function (channel) {
+    return channel.send(`**  
+  - Hello ${member} :hearts: 
+         -  انت العضو رقم ${member.guild.memberCount} :man_dancing: 
+                - You Are in a Big Community :dove: 
+                       -  NyR Network :tiger2:  **`) 
+  }).catch(console.error)
+  });
+
+  client.on("guildMemberRemove", member => {
+    member.createDM().then(function (channel) {
+    return channel.send(`**  
+  - Bye ${member} :broken_heart: **`) 
+  }).catch(console.error)
+  });
+
 const bannedwords = [
       "كسمك",
       "زبي",
